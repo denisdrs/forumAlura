@@ -1,0 +1,18 @@
+# Use the official postgres image with the latest tag
+FROM postgres:latest
+
+# Set environment variables
+ENV POSTGRES_USER=admin
+ENV POSTGRES_PASSWORD=admin
+
+# Create the data directory
+RUN mkdir -p /var/lib/postgresql/data
+
+# Volume to persist data
+VOLUME postgres_sql:/var/lib/postgresql/data
+
+# Expose the default port
+EXPOSE 5432
+
+# Command to run postgres server
+CMD ["postgres", "-d"]
